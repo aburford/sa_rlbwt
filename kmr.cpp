@@ -84,7 +84,7 @@ struct kmr_result *build_kmr(string s) {
 			counts_copy[i] = counts[i];
 		}
 		for (uint64_t i = n-1; i < n; i--) {
-			uint64_t tmpval = kmr[ai-1][permute[i]] * n + kmr[ai-1][min(permute[i]+offset, n)];
+			uint64_t tmpval = kmr[ai-1][permute[i]] * (n + 1) + kmr[ai-1][min(permute[i]+offset, n)];
 			tmp[counts[kmr[ai-1][permute[i]]]-- - 1] = tmpval;
 		}
 		uint64_t prev = 1;

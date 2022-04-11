@@ -24,4 +24,4 @@ struct kmr_result *build_kmr(string s);
 void free_kmr(struct kmr_result *);
 
 struct rlbwt_result *build_rlbwt(char *bwt);
-void free_rlbwt(struct rlbwt_result *rlbwt);
+struct run *get_run(struct rlbwt_result *, uint64_t);
