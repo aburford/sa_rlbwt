@@ -47,6 +47,7 @@ void free_kmr(struct kmr_result *);
 
 struct rlbwt_result *build_rlbwt(char *bwt);
 struct sa_rlbwt *build_sa_rlbwt(struct rlbwt_result *res, uint64_t *sa, uint64_t *lf);
+uint64_t query_sa_rlbwt(struct sa_rlbwt *sarl, uint64_t i);
 
 extern uint64_t round_pow2(uint64_t n, bool up);
 

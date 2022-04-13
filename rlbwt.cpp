@@ -62,6 +62,11 @@ int find_run(struct sa_rlbwt *sarl, uint64_t i) {
 	return lo;
 }
 
+// can we do this faster if we compute blocks in a
+// smart order to avoid repeat computation?
+// start with larger blocks and compute recursively?
+// take block with min k of overlapping blocks?
+// right now i'm guessing it's O(rnlogn) but not sure
 void compute_block(struct sa_rlbwt *sarl, int ri, int bi, uint64_t blen, uint64_t boff) {
 	struct sa_run *r = &sarl->runs[ri];
 	struct sa_block *b = &r->blocks[bi];
@@ -73,7 +78,7 @@ void compute_block(struct sa_rlbwt *sarl, int ri, int bi, uint64_t blen, uint64_
 		str_index += r->lf - r->i;
 		ri = find_run(sarl, str_index);
 		r = &sarl->runs[ri];
-		printf("str_index %llu blen %llu r->i %llu r->len %llu\n", str_index, blen, r->i, r->len);
+		//printf("str_index %llu blen %llu r->i %llu r->len %llu\n", str_index, blen, r->i, r->len);
 		if (str_index == r->i || str_index + blen > r->i + r->len)
 			break;
 	} while (true);
@@ -109,6 +114,19 @@ struct sa_rlbwt *build_sa_rlbwt(struct rlbwt_result *res, uint64_t *sa, uint64_t
 		}
 	}
 	return sarl;
+}
+
+// TODO implement
+uint64_t query_sa_rlbwt(struct sa_rlbwt *sarl, uint64_t i) {
+	//int ri = find_run(sarl, i);
+	//uint64_t k = 0, blen, boff;
+	//int bi = get_block_index(len, off, &blen, &boff);
+
+	
+	return 0;
+}
+
+void serialize_sa_rlbwt(struct sa_rlbwt *sarl) {
 }
 
 void free_sa_rlbwt(struct sa_rlbwt *sarl) {

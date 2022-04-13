@@ -17,6 +17,13 @@ void debug() {
 	}
 }
 
+void test(struct sa_rlbwt *sarl, uint64_t *sa, uint64_t len) {
+	for (uint64_t i = 0; i < len; i++) {
+		uint64_t res = query_sa_rlbwt(sarl, i);
+		printf("sa[%llu]: %llu res: %llu\n", i, sa[i], res);
+	}
+}
+
 int main(int argc, char *argv[]) {
 	if (argc != 2 || argv[1][0] == '-') {
 		cout << "Usage: sa_rlbwt FILE" << endl;
@@ -53,7 +60,6 @@ int main(int argc, char *argv[]) {
 		printf("rlbwt:");
 		for (int i = 0; i < rlbwt->r; i++) {
 			printf(" (%c, %llu)", rlbwt->runs[i].c, rlbwt->runs[i].len);
-
 		}
 		printf("\n");
 
@@ -63,11 +69,12 @@ int main(int argc, char *argv[]) {
 			struct sa_run *r = &sarl->runs[ri];
 			printf("(%c, %llu) ", r->c, r->len);
 			printf("i: %llu, sa: %llu, lf: %llu, nblocks: %d\n", r->i, r->sa, r->lf, r->nblocks);
-			for (int bi = 0; bi < r->nblocks; r++) {
+			for (int bi = 0; bi < r->nblocks; bi++) {
 				struct sa_block *b = &r->blocks[bi];
 				printf("\tblock %d: pos %llu, k %llu\n", bi, b->pos, b->k);
 			}
 		}
+		test(sarl, sa, n + 1);
 
 		free(rlbwt);
 		free(sa);
