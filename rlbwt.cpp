@@ -73,7 +73,8 @@ void compute_block(struct sa_rlbwt *sarl, int ri, int bi, uint64_t blen, uint64_
 		str_index += r->lf - r->i;
 		ri = find_run(sarl, str_index);
 		r = &sarl->runs[ri];
-		if (str_index + blen > r->i + r->len)
+		printf("str_index %llu blen %llu r->i %llu r->len %llu\n", str_index, blen, r->i, r->len);
+		if (str_index == r->i || str_index + blen > r->i + r->len)
 			break;
 	} while (true);
 	b->pos = str_index;

@@ -61,11 +61,11 @@ int main(int argc, char *argv[]) {
 		printf("sa_rlbwt:\n");
 		for (int ri = 0; ri < sarl->r; ri++) {
 			struct sa_run *r = &sarl->runs[ri];
-			printf("(%c, %llu)", r->c, r->len);
-			printf("\ti: %llu, sa: %llu, lf: %llu, nblocks: %d\n", r->i, r->sa, r->lf, r->nblocks);
+			printf("(%c, %llu) ", r->c, r->len);
+			printf("i: %llu, sa: %llu, lf: %llu, nblocks: %d\n", r->i, r->sa, r->lf, r->nblocks);
 			for (int bi = 0; bi < r->nblocks; r++) {
 				struct sa_block *b = &r->blocks[bi];
-				printf("\t\tblock %d: pos %llu, k %llu\n", bi, b->pos, b->k);
+				printf("\tblock %d: pos %llu, k %llu\n", bi, b->pos, b->k);
 			}
 		}
 
