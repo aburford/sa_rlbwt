@@ -20,8 +20,36 @@ struct rlbwt_result {
 	struct run *runs;
 };
 
+struct sa_block {
+	uint64_t pos;
+	uint64_t k;
+	// cached run index
+	//uint64_t run_i;
+};
+
+struct sa_run {
+	char c;
+	uint64_t i;
+	uint64_t len;
+	uint64_t sa;
+	uint64_t lf; // only used for construction
+	int nblocks; // could also be computed on the fly
+	sa_block *blocks;
+};
+
+struct sa_rlbwt {
+	int r;
+	struct sa_run *runs;
+};
+
 struct kmr_result *build_kmr(string s);
 void free_kmr(struct kmr_result *);
 
 struct rlbwt_result *build_rlbwt(char *bwt);
-struct run *get_run(struct rlbwt_result *, uint64_t);
+struct sa_rlbwt *build_sa_rlbwt(struct rlbwt_result *res, uint64_t *sa, uint64_t *lf);
+
+extern uint64_t round_pow2(uint64_t n, bool up);
+
+// debug
+int get_block_index(uint64_t len, uint64_t off, uint64_t *blen, uint64_t *boff);
+int get_num_blocks(uint64_t len);

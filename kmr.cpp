@@ -1,41 +1,5 @@
 #include "sa_rlbwt.h"
 
-using namespace std;
-
-uint64_t round_pow2(uint64_t n, bool up) {
-	if (n < 3)
-		return n - 1;
-	int hi = 63, mid, lo = 1;
-	uint64_t base = 1;
-	if (n > (base << hi))
-		return hi;
-	if ((base << hi) == n)
-		return hi;
-	while (hi - lo > 1) {
-		mid = (hi+lo)/2;
-		if (n < (base << mid))
-			hi = mid;
-		else if (n > (base << mid))
-			lo = mid;
-		else
-			return mid;
-	}
-	if (up)
-		return hi;
-	return lo;
-}
-
-bool compare(uint64_t* kmr[], uint64_t i, uint64_t j, uint64_t l) {
-	uint64_t lgl = round_pow2(l, false);
-	if (l == (1 << lgl))
-		return kmr[lgl][i] == kmr[lgl][j];
-	if (kmr[lgl][i] != kmr[lgl][j])
-		return false;
-	if (kmr[lgl][i + l - (1<<lgl)] != kmr[lgl][j + l - (1<<lgl)])
-		return false;
-	return true;
-}
-
 struct kmr_result *build_kmr(string s) {
 	uint64_t n = s.size();
 	struct kmr_result *res = (struct kmr_result *)malloc(sizeof(kmr_result));
@@ -111,4 +75,27 @@ void free_kmr(struct kmr_result *kmr) {
 		free(kmr->arrays[i]);
 	free(kmr->arrays);
 	free(kmr);
+}
+
+uint64_t round_pow2(uint64_t n, bool up) {
+	if (n < 3)
+		return n - 1;
+	int hi = 63, mid, lo = 1;
+	uint64_t base = 1;
+	if (n > (base << hi))
+		return hi;
+	if ((base << hi) == n)
+		return hi;
+	while (hi - lo > 1) {
+		mid = (hi+lo)/2;
+		if (n < (base << mid))
+			hi = mid;
+		else if (n > (base << mid))
+			lo = mid;
+		else
+			return mid;
+	}
+	if (up)
+		return hi;
+	return lo;
 }
