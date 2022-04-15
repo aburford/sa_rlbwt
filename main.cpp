@@ -12,7 +12,7 @@ void debug() {
 		printf("len %d has %d blocks\n", i, get_num_blocks(i));
 		for (int j = 1; j < i; j++) {
 			bi = get_block_index(i, j, &blen, &boff);
-			printf("\toff: %d, block index: %d, blen: %llu, boff: %llu\n", j, bi, blen, boff);
+			printf("\toff: %d, block index: %d, blen: %lu, boff: %lu\n", j, bi, blen, boff);
 		}
 	}
 }
@@ -20,7 +20,7 @@ void debug() {
 void test(struct sa_rlbwt *sarl, uint64_t *sa, uint64_t len) {
 	for (uint64_t i = 0; i < len; i++) {
 		uint64_t res = query_sa_rlbwt(sarl, i);
-		printf("sa[%llu]: %llu res: %llu\n", i, sa[i], res);
+		printf("sa[%lu]: %lu res: %lu\n", i, sa[i], res);
 	}
 }
 
@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
 
 		printf("rlbwt:");
 		for (int i = 0; i < rlbwt->r; i++) {
-			printf(" (%c, %llu)", rlbwt->runs[i].c, rlbwt->runs[i].len);
+			printf(" (%c, %lu)", rlbwt->runs[i].c, rlbwt->runs[i].len);
 		}
 		printf("\n");
 
@@ -67,11 +67,11 @@ int main(int argc, char *argv[]) {
 		printf("sa_rlbwt:\n");
 		for (int ri = 0; ri < sarl->r; ri++) {
 			struct sa_run *r = &sarl->runs[ri];
-			printf("(%c, %llu) ", r->c, r->len);
-			printf("i: %llu, sa: %llu, lf: %llu, nblocks: %d\n", r->i, r->sa, r->lf, r->nblocks);
+			printf("(%c, %lu) ", r->c, r->len);
+			printf("i: %lu, sa: %lu, lf: %lu, nblocks: %d\n", r->i, r->sa, r->lf, r->nblocks);
 			for (int bi = 0; bi < r->nblocks; bi++) {
 				struct sa_block *b = &r->blocks[bi];
-				printf("\tblock %d: pos %llu, k %llu\n", bi, b->pos, b->k);
+				printf("\tblock %d: pos %lu, k %lu\n", bi, b->pos, b->k);
 			}
 		}
 		test(sarl, sa, n + 1);

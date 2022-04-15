@@ -1,3 +1,4 @@
+#include "string.h"
 #include "sa_rlbwt.h"
 #define ONE ((uint64_t)1)
 
