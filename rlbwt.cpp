@@ -85,6 +85,8 @@ void compute_block(struct sa_rlbwt *sarl, int ri, int bi, uint64_t blen, uint64_
 	} while (true);
 	b->pos = str_index;
 	b->k = k;
+	// cache run index
+	b->run_i = find_run(sarl, b->pos);
 }
 
 struct sa_rlbwt *build_sa_rlbwt(struct rlbwt_result *res, uint64_t *sa, uint64_t *lf) {
@@ -119,12 +121,19 @@ struct sa_rlbwt *build_sa_rlbwt(struct rlbwt_result *res, uint64_t *sa, uint64_t
 
 // TODO implement
 uint64_t query_sa_rlbwt(struct sa_rlbwt *sarl, uint64_t i) {
-	//int ri = find_run(sarl, i);
-	//uint64_t k = 0, blen, boff;
-	//int bi = get_block_index(len, off, &blen, &boff);
+	sa_run *run = sarl->runs + find_run(sarl, i);
+	sa_block *block;
+	uint64_t delta = 0;
+	uint64_t blen, boff;
+	while (i != run->i)
+	{
+		block = run->blocks + get_block_index(run->len, i - run->i, &blen, &boff);
+		delta += block->k;
+		i = block->pos;
+		run = sarl->runs + block->run_i;
+	}
 
-	
-	return 0;
+	return run->sa + delta;
 }
 
 void serialize_sa_rlbwt(struct sa_rlbwt *sarl) {
