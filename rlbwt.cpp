@@ -126,7 +126,39 @@ uint64_t query_sa_rlbwt(struct sa_rlbwt *sarl, uint64_t i) {
 	return 0;
 }
 
-void serialize_sa_rlbwt(struct sa_rlbwt *sarl) {
+struct sa_rlbwt *deserialize_sa_rlbwt(ifstream &infile) {
+	struct sa_rlbwt *sarl = (struct sa_rlbwt*)malloc(sizeof(struct sa_rlbwt));
+	infile.read((char*)&sarl->r, sizeof(int));
+	sarl->runs = (struct sa_run*)malloc(sizeof(struct sa_run) * sarl->r);
+	for (int ri = 0; ri < sarl->r; ri++) {
+		struct sa_run *run = &sarl->runs[ri];
+		infile.read((char*)run, sizeof(sa_run) - sizeof(sa_block *));
+		run->blocks = (struct sa_block*)malloc(sizeof(struct sa_block) * run->nblocks);
+		infile.read((char*)run->blocks, sizeof(sa_block) * run->nblocks);
+	}
+	return sarl;
+}
+
+void serialize_sa_rlbwt(struct sa_rlbwt *sarl, ofstream &outfile) {
+	outfile.write((char*)&sarl->r, sizeof(int));
+	for (int ri = 0; ri < sarl->r; ri++) {
+		struct sa_run *run = &sarl->runs[ri];
+		outfile.write((char*)run, sizeof(sa_run) - sizeof(sa_block *));
+		outfile.write((char*)run->blocks, sizeof(sa_block) * run->nblocks);
+	}
+}
+
+void print_sa_rlbwt(struct sa_rlbwt *sarl) {
+	printf("sa_rlbwt:\n");
+	for (int ri = 0; ri < sarl->r; ri++) {
+		struct sa_run *r = &sarl->runs[ri];
+		printf("(%c, %llu) ", r->c, r->len);
+		printf("i: %llu, sa: %llu, lf: %llu, nblocks: %d\n", r->i, r->sa, r->lf, r->nblocks);
+		for (int bi = 0; bi < r->nblocks; bi++) {
+			struct sa_block *b = &r->blocks[bi];
+			printf("\tblock %d: pos %llu, k %llu\n", bi, b->pos, b->k);
+		}
+	}
 }
 
 void free_sa_rlbwt(struct sa_rlbwt *sarl) {
