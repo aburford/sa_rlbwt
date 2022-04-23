@@ -32,24 +32,24 @@ void print_help() {
 }
 
 int build_mode(string s, string outfn) {
-	printf("%s\n", s.c_str());
-	uint64_t n = s.size();
+	uint32_t n = s.size();
 	struct kmr_result *kmr = build_kmr(s);
 	// get SA from last kmr array
-	uint64_t *sa = (uint64_t *)malloc(sizeof(uint64_t) * (n + 1));
+	uint32_t *sa = (uint32_t *)malloc(sizeof(uint32_t) * (n + 1));
 	sa[0] = n;
-	for (uint64_t i = 0; i <= n; i++)
-		sa[kmr->arrays[kmr->k][i]] = i;
+	for (uint32_t i = 0; i <= n; i++)
+		sa[kmr->arr[i]] = i;
 	// build LF from SA
-	uint64_t *lf = (uint64_t *)malloc(sizeof(uint64_t) * (n + 1));
-	for (uint64_t i = 1; i <= n; i++)
-		lf[kmr->arrays[kmr->k][i]] = kmr->arrays[kmr->k][i - 1];
-	lf[kmr->arrays[kmr->k][0]] = 0;
-	free_kmr(kmr);
+	uint32_t *lf = (uint32_t *)malloc(sizeof(uint32_t) * (n + 1));
+	for (uint32_t i = 1; i <= n; i++)
+		lf[kmr->arr[i]] = kmr->arr[i - 1];
+	lf[kmr->arr[0]] = 0;
+	free(kmr->arr);
+	free(kmr);
 
 	char *bwt = (char *)malloc(s.size() + 2);
 	bwt[s.size() + 1] = '\0';
-	for (uint64_t i = 0; i <= s.size(); i++) {
+	for (uint32_t i = 0; i <= s.size(); i++) {
 		if (sa[i])
 			bwt[i] = s[sa[i]-1];
 		else
