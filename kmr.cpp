@@ -2,11 +2,15 @@
 
 struct kmr_result *build_kmr(string s) {
 	uint32_t n = s.size();
+	printf("allocating kmr arrays\n");
 	struct kmr_result *res = (struct kmr_result *)malloc(sizeof(kmr_result));
 	int k = round_pow2(n, true);
 	res->n = n;
 	uint32_t *kmr = (uint32_t *)malloc(sizeof(uint32_t) * (k+1));
 	uint32_t *kmr_prev = (uint32_t *)malloc(sizeof(uint32_t) * (k+1));
+	kmr[n] = 0;
+	kmr_prev[n] = 0;
+	printf("computing first kmr array\n");
 	// fill in A_0
 	for (uint32_t i = 0; i < n; i++)
 		kmr_prev[i] = s[i] - 'A' + 1;
@@ -25,6 +29,7 @@ struct kmr_result *build_kmr(string s) {
 	uint32_t *permute = (uint32_t*)malloc(sizeof(uint32_t) * n);
 	uint32_t *tmp = (uint32_t*)malloc(sizeof(uint32_t) * n);
 	for (uint32_t ai = 1; ai <= k; ai++) {
+		printf("computing kmr array %llu of %llu\n", ai, res->k);
 		for (uint32_t i = 0; i <= n; i++)
 			counts[i] = 0;
 		uint32_t offset = 1 << (ai - 1);

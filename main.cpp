@@ -33,13 +33,16 @@ void print_help() {
 
 int build_mode(string s, string outfn) {
 	uint32_t n = s.size();
+	printf("read in input string of size %llu\n", n);
 	struct kmr_result *kmr = build_kmr(s);
 	// get SA from last kmr array
+	printf("computing sa\n");
 	uint32_t *sa = (uint32_t *)malloc(sizeof(uint32_t) * (n + 1));
 	sa[0] = n;
 	for (uint32_t i = 0; i <= n; i++)
 		sa[kmr->arr[i]] = i;
 	// build LF from SA
+	printf("computing lf\n");
 	uint32_t *lf = (uint32_t *)malloc(sizeof(uint32_t) * (n + 1));
 	for (uint32_t i = 1; i <= n; i++)
 		lf[kmr->arr[i]] = kmr->arr[i - 1];
@@ -47,6 +50,7 @@ int build_mode(string s, string outfn) {
 	free(kmr->arr);
 	free(kmr);
 
+	printf("computing bwt\n");
 	char *bwt = (char *)malloc(s.size() + 2);
 	bwt[s.size() + 1] = '\0';
 	for (uint32_t i = 0; i <= s.size(); i++) {
@@ -55,17 +59,20 @@ int build_mode(string s, string outfn) {
 		else
 			bwt[i] = '$';
 	}
+	printf("building rlbwt\n");
 	struct rlbwt_result *rlbwt = build_rlbwt(bwt);
 
-	printf("rlbwt:");
-	for (int i = 0; i < rlbwt->r; i++) {
-		printf(" (%c, %llu)", rlbwt->runs[i].c, rlbwt->runs[i].len);
-	}
-	printf("\n");
+	//printf("rlbwt:");
+	//for (int i = 0; i < rlbwt->r; i++) {
+	//	printf(" (%c, %llu)", rlbwt->runs[i].c, rlbwt->runs[i].len);
+	//}
+	//printf("\n");
 
+	printf("building sa_rlbwt\n");
 	struct sa_rlbwt *sarl = build_sa_rlbwt(rlbwt, sa, lf);
-	print_sa_rlbwt(sarl);
-	test(sarl, sa, n + 1);
+	//print_sa_rlbwt(sarl);
+	//test(sarl, sa, n + 1);
+	printf("writing out sa_rlbwt\n");
 	ofstream outfile(outfn);
 	serialize_sa_rlbwt(sarl, outfile);
 	outfile.close();
