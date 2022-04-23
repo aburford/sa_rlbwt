@@ -16,7 +16,7 @@ using namespace std;
 struct kmr_result {
 	uint32_t n;
 	uint32_t *arr;
-}
+};
 
 struct run {
 	char c;

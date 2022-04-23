@@ -6,7 +6,7 @@
 using namespace std;
 
 void debug() {
-	uint64_t blen, boff;
+	uint32_t blen, boff;
 	int bi;
 	for (int i = 1; i < 25; i++) {
 		printf("len %d has %d blocks\n", i, get_num_blocks(i));
@@ -17,9 +17,9 @@ void debug() {
 	}
 }
 
-void test(struct sa_rlbwt *sarl, uint64_t *sa, uint64_t len) {
-	for (uint64_t i = 0; i < len; i++) {
-		uint64_t res = query_sa_rlbwt(sarl, i);
+void test(struct sa_rlbwt *sarl, uint32_t *sa, uint32_t len) {
+	for (uint32_t i = 0; i < len; i++) {
+		uint32_t res = query_sa_rlbwt(sarl, i);
 		printf("sa[%lu]: %lu res: %lu\n", i, sa[i], res);
 	}
 }
@@ -35,6 +35,9 @@ int build_mode(string s, string outfn) {
 	uint32_t n = s.size();
 	printf("read in input string of size %llu\n", n);
 	struct kmr_result *kmr = build_kmr(s);
+	for (int i = 0; i < n + 1; i++)
+		printf("%u ", kmr->arr[i]);
+	printf("\n");
 	// get SA from last kmr array
 	printf("computing sa\n");
 	uint32_t *sa = (uint32_t *)malloc(sizeof(uint32_t) * (n + 1));
@@ -143,11 +146,11 @@ int main(int argc, char *argv[]) {
 		}
 		ifstream ifs(infile);
 		struct sa_rlbwt *sarl = deserialize_sa_rlbwt(ifs);
-		uint64_t len = sarl->runs[sarl->r - 1].i + sarl->runs[sarl->r - 1].len;
+		uint32_t len = sarl->runs[sarl->r - 1].i + sarl->runs[sarl->r - 1].len;
 		minstd_rand0 gen(0);
 		// TODO more precise timing
 		for (int i = 0; i < RAND_SAMPLES; i++) {
-			uint64_t index = gen() % len;
+			uint32_t index = gen() % len;
 			printf("sa[%llu]: %llu\n", index, query_sa_rlbwt(sarl, index));
 		}
 	}
