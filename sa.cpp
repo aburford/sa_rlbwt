@@ -7,16 +7,6 @@ void print_help() {
 	printf("-r accepts sa_rlbwt data struct file and suffix array file, randomly sample values of suffix array\n");
 }
 
-uint32_t *deserialize(char *fn, uint32_t *len) {
-	ifstream ifs(fn);
-	ifs.seekg(0, ifs.end);
-	*len = ifs.tellg();
-	uint32_t *sa = (uint32_t *)malloc(*len);
-	ifs.seekg(0, ifs.beg);
-	ifs.read((char*)sa, *len);
-	return sa;
-}
-
 int main(int argc, char *argv[]) {
 	int ret = 0;
 	const char *optstr = "hb:q:s:r:";

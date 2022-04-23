@@ -106,3 +106,14 @@ uint32_t round_pow2(uint32_t n, bool up) {
 		return hi;
 	return lo;
 }
+
+uint32_t *deserialize(char *fn, uint32_t *len) {
+	ifstream ifs(fn);
+	ifs.seekg(0, ifs.end);
+	*len = ifs.tellg();
+	uint32_t *sa = (uint32_t *)malloc(*len);
+	ifs.seekg(0, ifs.beg);
+	ifs.read((char*)sa, *len);
+	return sa;
+}
+

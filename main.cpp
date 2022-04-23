@@ -25,33 +25,45 @@ void test(struct sa_rlbwt *sarl, uint32_t *sa, uint32_t len) {
 }
 
 void print_help() {
-	printf("Usage: sa_rlbwt [-b in_file] | [-q sa_rlbwt_file patterns_file ]\n");
-	printf("-b accepts plaintext file with one line of text and write out sa_rlbwt data structure to file\n");
+	printf("Usage: sa_rlbwt [-b in_file [-s sa_file]] | [-q sa_rlbwt_file patterns_file ]\n");
+	printf("-b accepts plaintext file with one line of text and write out sa_rlbwt data structure to file. also accepts optional -s option to provide suffix array file\n");
 	printf("-q accepts sa_rlbwt data struct file and plaintext file with new line separated patterns to search for\n");
 	printf("-r accepts sa_rlbwt data struct file and suffix array file, randomly sample values of suffix array\n");
 }
 
-int build_mode(string s, string outfn) {
+int build_mode(string s, char *safn, string outfn) {
 	uint32_t n = s.size();
 	printf("read in input string of size %llu\n", n);
-	struct kmr_result *kmr = build_kmr(s);
-	for (int i = 0; i < n + 1; i++)
-		printf("%u ", kmr->arr[i]);
-	printf("\n");
 	// get SA from last kmr array
 	printf("computing sa\n");
-	uint32_t *sa = (uint32_t *)malloc(sizeof(uint32_t) * (n + 1));
-	sa[0] = n;
-	for (uint32_t i = 0; i <= n; i++)
-		sa[kmr->arr[i]] = i;
-	// build LF from SA
-	printf("computing lf\n");
-	uint32_t *lf = (uint32_t *)malloc(sizeof(uint32_t) * (n + 1));
-	for (uint32_t i = 1; i <= n; i++)
-		lf[kmr->arr[i]] = kmr->arr[i - 1];
-	lf[kmr->arr[0]] = 0;
-	free(kmr->arr);
-	free(kmr);
+	uint32_t *sa, *lf;
+	if (safn) {
+		uint32_t n2;
+		sa = deserialize(safn, &n2);
+		printf("computing lf\n");
+		uint32_t *kmr = (uint32_t *)malloc(sizeof(uint32_t) * (n + 1));
+		for (uint32_t i = 0; i <= n; i++)
+			kmr[sa[i]] = i;
+		lf = (uint32_t *)malloc(sizeof(uint32_t) * (n + 1));
+		for (uint32_t i = 1; i <= n; i++)
+			lf[kmr[i]] = kmr[i - 1];
+		lf[kmr[0]] = 0;
+		free(kmr);
+	} else {
+		struct kmr_result *kmr = build_kmr(s);
+		sa = (uint32_t *)malloc(sizeof(uint32_t) * (n + 1));
+		sa[0] = n;
+		for (uint32_t i = 0; i <= n; i++)
+			sa[kmr->arr[i]] = i;
+		// build LF from SA
+		printf("computing lf\n");
+		lf = (uint32_t *)malloc(sizeof(uint32_t) * (n + 1));
+		for (uint32_t i = 1; i <= n; i++)
+			lf[kmr->arr[i]] = kmr->arr[i - 1];
+		lf[kmr->arr[0]] = 0;
+		free(kmr->arr);
+		free(kmr);
+	}
 
 	printf("computing bwt\n");
 	char *bwt = (char *)malloc(s.size() + 2);
@@ -92,12 +104,20 @@ int main(int argc, char *argv[]) {
 	const char *optstr = "hb:q:s:r:";
 	int mode = 0;
 	char *infile;
+	char *sa_file = NULL;
 	char *pattern_file;
 	while ((ret = getopt(argc, argv, optstr)) > 0) {
 		switch (ret) {
 		case 'b':
 			mode = BUILD_MODE;
 			infile = optarg;
+			break;
+		case 's':
+			if (mode != BUILD_MODE) {
+				print_help();
+				exit(1);
+			}
+			sa_file = optarg;
 			break;
 		case 'q':
 			mode = QUERY_MODE;
@@ -129,7 +149,7 @@ int main(int argc, char *argv[]) {
 		// TODO read patterns file and perform queries
 		print_sa_rlbwt(sarl);
 	} else if (mode == BUILD_MODE) {
-		if (argc != 3) {
+		if (argc != 3 && argc != 5) {
 			print_help();
 			exit(1);
 		}
@@ -138,7 +158,7 @@ int main(int argc, char *argv[]) {
 		ifs >> s;
 		string outfn(infile);
 		outfn += ".sa_rlbwt";
-		return build_mode(s, outfn);
+		return build_mode(s, sa_file, outfn);
 	} else if (mode == RAND_MODE) {
 		if (argc != 3) {
 			print_help();
