@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <fstream>
 #include <random>
+#include <cstring>
 
 #define BUILD_MODE 1
 #define QUERY_MODE 2
