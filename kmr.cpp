@@ -2,6 +2,7 @@
 
 struct kmr_result *build_kmr(string s) {
 	uint64_t n = s.size();
+	printf("allocating kmr arrays\n");
 	struct kmr_result *res = (struct kmr_result *)malloc(sizeof(kmr_result));
 	res->k = round_pow2(n, true);
 	res->n = n;
@@ -10,6 +11,7 @@ struct kmr_result *build_kmr(string s) {
 		kmr[i] = (uint64_t *)malloc(sizeof(uint64_t) * (n+1));
 		kmr[i][n] = 0;
 	}
+	printf("computing first kmr array\n");
 	// fill in A_0
 	for (uint64_t i = 0; i < n; i++)
 		kmr[0][i] = s[i] - 'A' + 1;
@@ -23,11 +25,13 @@ struct kmr_result *build_kmr(string s) {
 	for (uint64_t i = 0; i < n; i++)
 		kmr[0][i] = alphasort[kmr[0][i]];
 
+	printf("allocating tmp arrays\n");
 	uint64_t *counts = (uint64_t*)malloc(sizeof(uint64_t) * (n+1));
 	uint64_t *counts_copy = (uint64_t*)malloc(sizeof(uint64_t) * (n+1));
 	uint64_t *permute = (uint64_t*)malloc(sizeof(uint64_t) * n);
 	uint64_t *tmp = (uint64_t*)malloc(sizeof(uint64_t) * n);
 	for (uint64_t ai = 1; ai <= res->k; ai++) {
+		printf("computing kmr array %llu of %llu\n", ai, res->k);
 		for (uint64_t i = 0; i <= n; i++)
 			counts[i] = 0;
 		uint64_t offset = 1 << (ai - 1);

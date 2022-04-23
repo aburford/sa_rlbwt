@@ -3,7 +3,6 @@
 #define ONE ((uint64_t)1)
 
 struct rlbwt_result *build_rlbwt(char *bwt) {
-	printf("%s\n", bwt);
 	uint64_t n = strlen(bwt);
 	struct rlbwt_result *res = (struct rlbwt_result *)malloc(sizeof(struct rlbwt_result));
 	struct run *run;
@@ -107,6 +106,7 @@ struct sa_rlbwt *build_sa_rlbwt(struct rlbwt_result *res, uint64_t *sa, uint64_t
 		str_index += run->len;
 	}
 	for (int i = 0; i < sarl->r; i++) {
+		printf("computing blocks for run %d of %d\n", i, sarl->r);
 		struct sa_run *run = &sarl->runs[i];
 		uint64_t off = 1;
 		while (off < run->len) {
@@ -119,7 +119,6 @@ struct sa_rlbwt *build_sa_rlbwt(struct rlbwt_result *res, uint64_t *sa, uint64_t
 	return sarl;
 }
 
-// TODO implement
 uint64_t query_sa_rlbwt(struct sa_rlbwt *sarl, uint64_t i) {
 	sa_run *run = sarl->runs + find_run(sarl, i);
 	sa_block *block;
