@@ -168,10 +168,15 @@ int main(int argc, char *argv[]) {
 		struct sa_rlbwt *sarl = deserialize_sa_rlbwt(ifs);
 		uint32_t len = sarl->runs[sarl->r - 1].i + sarl->runs[sarl->r - 1].len;
 		minstd_rand0 gen(0);
-		// TODO more precise timing
+		high_resolution_clock::time_point t1, t2;
 		for (int i = 0; i < RAND_SAMPLES; i++) {
 			uint32_t index = gen() % len;
-			printf("sa[%llu]: %llu\n", index, query_sa_rlbwt(sarl, index));
+			t1 = high_resolution_clock::now();
+			query_sa_rlbwt(sarl, index);
+			t2 = high_resolution_clock::now();
+			duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
+			// print in microseconds
+			printf("%.3f\n", time_span.count() * 1000000);
 		}
 	}
 	return 0;

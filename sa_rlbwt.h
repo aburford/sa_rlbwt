@@ -4,6 +4,7 @@
 #include <fstream>
 #include <random>
 #include <cstring>
+#include <chrono>
 
 #define BUILD_MODE 1
 #define QUERY_MODE 2
@@ -12,6 +13,7 @@
 #define RAND_SAMPLES 20
 
 using namespace std;
+using namespace chrono;
 
 struct kmr_result {
 	uint32_t n;
