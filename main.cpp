@@ -12,7 +12,7 @@ void debug() {
 		printf("len %d has %d blocks\n", i, get_num_blocks(i));
 		for (int j = 1; j < i; j++) {
 			bi = get_block_index(i, j, &blen, &boff);
-			printf("\toff: %d, block index: %d, blen: %llu, boff: %llu\n", j, bi, blen, boff);
+			printf("\toff: %d, block index: %d, blen: %lu, boff: %lu\n", j, bi, blen, boff);
 		}
 	}
 }
@@ -20,7 +20,7 @@ void debug() {
 void test(struct sa_rlbwt *sarl, uint64_t *sa, uint64_t len) {
 	for (uint64_t i = 0; i < len; i++) {
 		uint64_t res = query_sa_rlbwt(sarl, i);
-		printf("sa[%llu]: %llu res: %llu\n", i, sa[i], res);
+		printf("sa[%lu]: %lu res: %lu\n", i, sa[i], res);
 	}
 }
 
