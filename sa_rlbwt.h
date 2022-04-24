@@ -5,6 +5,7 @@
 #include <random>
 #include <cstring>
 #include <divsufsort.h>
+#include <chrono>
 
 #define BUILD_MODE 1
 #define QUERY_MODE 2
@@ -13,6 +14,7 @@
 #define RAND_SAMPLES 20
 
 using namespace std;
+using namespace chrono;
 
 struct kmr_result {
 	uint32_t n;
@@ -52,6 +54,7 @@ struct sa_rlbwt {
 };
 
 struct kmr_result *build_kmr(string s);
+uint32_t *deserialize(char *fn, uint32_t *len);
 
 struct rlbwt_result *build_rlbwt(char *bwt);
 struct sa_rlbwt *build_sa_rlbwt(struct rlbwt_result *res, uint32_t *sa, uint32_t *lf);

@@ -7,14 +7,8 @@ void print_help() {
 	printf("-r accepts sa_rlbwt data struct file and suffix array file, randomly sample values of suffix array\n");
 }
 
-uint32_t *deserialize(char *fn, uint32_t *len) {
-	ifstream ifs(fn);
-	ifs.seekg(0, ifs.end);
-	*len = ifs.tellg();
-	uint32_t *sa = (uint32_t *)malloc(*len);
-	ifs.seekg(0, ifs.beg);
-	ifs.read((char*)sa, *len);
-	return sa;
+uint32_t query_sa(uint32_t *sa, uint32_t i) {
+	return sa[i];
 }
 
 int main(int argc, char *argv[]) {
@@ -85,10 +79,15 @@ int main(int argc, char *argv[]) {
 		uint32_t *sa = deserialize(infile, &len);
 		len /= sizeof(uint32_t);
 		minstd_rand0 gen(0);
-		// TODO more precise timing
+		high_resolution_clock::time_point t1, t2;
 		for (int i = 0; i < RAND_SAMPLES; i++) {
 			uint32_t index = gen() % len;
-			printf("sa[%llu]: %llu\n", index, sa[index]);
+			t1 = high_resolution_clock::now();
+			query_sa(sa, index);
+			t2 = high_resolution_clock::now();
+			duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
+			// print in microseconds
+			printf("%.3f\n", time_span.count() * 1000000);
 		}
 	}
 	return 0;
