@@ -1,4 +1,4 @@
-#include "sa_rlbwt.h"
+#include "../include/sa_rlbwt.h"
 
 // dna alphabet:
 // ABCDGHKMNRSTVWY

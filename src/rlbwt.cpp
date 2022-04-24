@@ -1,5 +1,5 @@
 #include "string.h"
-#include "sa_rlbwt.h"
+#include "../include/sa_rlbwt.h"
 #define ONE ((uint64_t)1)
 
 struct rlbwt_result *build_rlbwt(char *bwt) {
@@ -125,8 +125,7 @@ uint64_t query_sa_rlbwt(struct sa_rlbwt *sarl, uint64_t i) {
 	sa_block *block;
 	uint64_t delta = 0;
 	uint64_t blen, boff;
-	while (i != run->i)
-	{
+	while (i != run->i) {
 		block = run->blocks + get_block_index(run->len, i - run->i, &blen, &boff);
 		delta += block->k;
 		i = block->pos;

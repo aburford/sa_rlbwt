@@ -1,4 +1,4 @@
-#include "sa_rlbwt.h"
+#include "../include/sa_rlbwt.h"
 
 void print_help() {
 	printf("Usage: sa_rlbwt [-b in_file] | [-q sa_rlbwt_file patterns_file ]\n");
