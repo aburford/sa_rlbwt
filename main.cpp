@@ -35,9 +35,6 @@ int build_mode(string s, string outfn) {
 	uint32_t n = s.size();
 	printf("read in input string of size %llu\n", n);
 	struct kmr_result *kmr = build_kmr(s);
-	for (int i = 0; i < n + 1; i++)
-		printf("%u ", kmr->arr[i]);
-	printf("\n");
 	// get SA from last kmr array
 	printf("computing sa\n");
 	uint32_t *sa = (uint32_t *)malloc(sizeof(uint32_t) * (n + 1));

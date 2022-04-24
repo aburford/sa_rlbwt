@@ -4,6 +4,7 @@
 #include <fstream>
 #include <random>
 #include <cstring>
+#include <divsufsort.h>
 
 #define BUILD_MODE 1
 #define QUERY_MODE 2
