@@ -38,9 +38,10 @@ int build_mode(string s, char *safn, string outfn) {
 	printf("computing sa\n");
 	uint32_t *sa, *lf;
 	if (safn) {
-		uint32_t n2;
+		uint64_t n2;
 		sa = deserialize(safn, &n2);
 		printf("computing lf\n");
+		printf("n: %u, n2: %lu\n", n, n2);
 		uint32_t *kmr = (uint32_t *)malloc(sizeof(uint32_t) * (n + 1));
 		for (uint32_t i = 0; i <= n; i++)
 			kmr[sa[i]] = i;
@@ -148,6 +149,7 @@ int main(int argc, char *argv[]) {
 		struct sa_rlbwt *sarl = deserialize_sa_rlbwt(ifs);
 		// TODO read patterns file and perform queries
 		print_sa_rlbwt(sarl);
+		free_sa_rlbwt(sarl);
 	} else if (mode == BUILD_MODE) {
 		if (argc != 3 && argc != 5) {
 			print_help();
@@ -166,9 +168,26 @@ int main(int argc, char *argv[]) {
 		}
 		ifstream ifs(infile);
 		struct sa_rlbwt *sarl = deserialize_sa_rlbwt(ifs);
+		ifs.close();
+		// touch all the data
+		//uint64_t sum = 0;
+		//for (int ri = 0; ri < sarl->r; ri++) {
+		//	struct sa_run *run = &sarl->runs[ri];
+		//	sum += run->c + run->nblocks;
+		//	for (int bi = 0; bi < run->nblocks; bi++) {
+		//		sum += run->blocks[bi].pos + run->blocks[bi].run_i;
+		//	}
+		//}
+		//printf("sum: %lu\n", sum);
+		//this_thread::sleep_for(chrono::seconds(5));
+		//free(sarl);
+		//return 0;
+
+
 		uint32_t len = sarl->runs[sarl->r - 1].i + sarl->runs[sarl->r - 1].len;
 		minstd_rand0 gen(0);
 		high_resolution_clock::time_point t1, t2;
+		fprintf(stderr, "beginning queries\n");
 		for (int i = 0; i < RAND_SAMPLES; i++) {
 			uint32_t index = gen() % len;
 			t1 = high_resolution_clock::now();
@@ -178,6 +197,7 @@ int main(int argc, char *argv[]) {
 			// print in microseconds
 			printf("%.3f\n", time_span.count() * 1000000);
 		}
+		free(sarl);
 	}
 	return 0;
 }

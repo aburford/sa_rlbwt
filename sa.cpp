@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
 		}
 		printf("query mode\n");
 		pattern_file = argv[3];
-		uint32_t len;
+		uint64_t len;
 		uint32_t *sa = deserialize(infile, &len);
 	} else if (mode == BUILD_MODE) {
 		ifstream ifs(infile);
@@ -75,7 +75,7 @@ int main(int argc, char *argv[]) {
 			print_help();
 			exit(1);
 		}
-		uint32_t len;
+		uint64_t len;
 		uint32_t *sa = deserialize(infile, &len);
 		len /= sizeof(uint32_t);
 		minstd_rand0 gen(0);
