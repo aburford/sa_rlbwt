@@ -9,6 +9,7 @@ bool compare_first(std::pair<char, int> a, std::pair<char, int> b){
 	return a.first < b.first;
 }
 
+// Generate de Bruijn sequences
 std::string db_sequence(int k, int n) {
 	std::vector<std::pair<char, int>> perm;
 	std::string sequence;
@@ -35,7 +36,19 @@ std::string db_sequence(int k, int n) {
 	return sequence;
 }
 
-int all_queries(string s) {
+// Generate prefixes of the Thu-Morse sequence
+std::string tm_sequence(int repeats) {
+	std::string sequence("A");
+	for (int i = 0; i < repeats; i++) {
+		int n = sequence.size();
+		for (int j = 0; j < n; j++) {
+			sequence.push_back('A' + ('B' - sequence[j]));
+		}
+	}
+	return sequence;
+}
+
+int compare_kmr(string s) {
 	uint32_t n = s.size();
 	uint32_t *sa, *lf;
 	struct kmr_result *kmr = build_kmr(s);
@@ -58,16 +71,32 @@ int all_queries(string s) {
 		else
 			bwt[i] = '$';
 	}
+	//std::cout << "bwt: " << bwt << std::endl;
 	struct rlbwt_result *rlbwt = build_rlbwt(bwt);
+	//printf("rlbwt:");
+	//for (int i = 0; i < rlbwt->r; i++) {
+	//	printf(" (%c, %llu)", rlbwt->runs[i].c, rlbwt->runs[i].len);
+	//}
 	struct sa_rlbwt *sarl = build_sa_rlbwt(rlbwt, sa, lf);
+	//print_sa_rlbwt(sarl);
 	for (uint64_t i = 0; i <= n; i++) {
 		assert(sa[i] == query_sa_rlbwt(sarl, i));
+		//std::cout << "sa[" << i << "]: " << sa[i] << " res: " << query_sa_rlbwt(sarl, i) << std::endl;
 	}
 	return 0;
 }
 
 int main(int argc, char *argv[]) {
-	std::string seq = db_sequence(3, 4);
-	all_queries(seq);
+	for (int k = 1; k < 8; k++) {
+		for (int n = 1; n < 6; n++) {
+			compare_kmr(db_sequence(k, n));
+		}
+	}
+	for (int n = 1; n < 12; n++) {
+		compare_kmr(tm_sequence(n));
+	}
+	//std::string seq = db_sequence(2, 5);
+	//std::string seq = tm_sequence(5);
+	//compare_kmr(seq);
 	return 0;
 }

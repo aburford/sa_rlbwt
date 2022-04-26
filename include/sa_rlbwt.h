@@ -34,7 +34,8 @@ struct sa_block {
 	uint32_t pos;
 	uint32_t k;
 	// cached run index
-	uint32_t run_i;
+	uint32_t run_lo;
+	uint32_t run_hi;
 };
 
 struct sa_run {

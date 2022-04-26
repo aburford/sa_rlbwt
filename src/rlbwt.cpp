@@ -50,8 +50,8 @@ int get_block_index(uint32_t len, uint32_t off, uint32_t *blen, uint32_t *boff) 
 	}
 }
 
-int find_run(struct sa_rlbwt *sarl, uint32_t i) {
-	int mid, lo = 0, hi = sarl->r - 1;
+int find_run(struct sa_rlbwt *sarl, uint32_t i, uint32_t lo, uint32_t hi) {
+	int mid;
 	while (lo != hi) {
 		mid = (lo+hi+1)/2;
 		if (i < sarl->runs[mid].i)
@@ -76,7 +76,7 @@ void compute_block(struct sa_rlbwt *sarl, int ri, int bi, uint32_t blen, uint32_
 	do {
 		k++;
 		str_index += r->lf - r->i;
-		ri = find_run(sarl, str_index);
+		ri = find_run(sarl, str_index, 0, sarl->r - 1);
 		r = &sarl->runs[ri];
 		//printf("str_index %llu blen %llu r->i %llu r->len %llu\n", str_index, blen, r->i, r->len);
 		if (str_index == r->i || str_index + blen > r->i + r->len)
@@ -85,7 +85,8 @@ void compute_block(struct sa_rlbwt *sarl, int ri, int bi, uint32_t blen, uint32_
 	b->pos = str_index;
 	b->k = k;
 	// cache run index
-	b->run_i = find_run(sarl, b->pos);
+	b->run_lo = find_run(sarl, b->pos, 0, sarl->r - 1);
+	b->run_hi = find_run(sarl, b->pos + blen, 0, sarl->r - 1);
 }
 
 struct sa_rlbwt *build_sa_rlbwt(struct rlbwt_result *res, uint32_t *sa, uint32_t *lf) {
@@ -120,17 +121,16 @@ struct sa_rlbwt *build_sa_rlbwt(struct rlbwt_result *res, uint32_t *sa, uint32_t
 }
 
 uint32_t query_sa_rlbwt(struct sa_rlbwt *sarl, uint32_t i) {
-	sa_run *run = sarl->runs + find_run(sarl, i);
+	sa_run *run = sarl->runs + find_run(sarl, i, 0, sarl->r - 1);
 	sa_block *block;
 	uint32_t delta = 0;
 	uint32_t blen, boff;
 	while (i != run->i) {
 		block = run->blocks + get_block_index(run->len, i - run->i, &blen, &boff);
 		delta += block->k;
-		i = block->pos;
-		run = sarl->runs + block->run_i;
+		i = block->pos + (i - (run->i + boff));
+		run = sarl->runs + find_run(sarl, i, block->run_lo, block->run_hi);
 	}
-
 	return run->sa + delta;
 }
 
