@@ -200,6 +200,9 @@ int main(int argc, char *argv[]) {
 			// print in microseconds
 			printf("%.3f\n", time_span.count() * 1000000);
 		}
+		ofstream ofs("repdna_x4.sa_rlbwt.smaller");
+		serialize_sa_rlbwt(sarl, ofs);
+		ofs.close();
 		free(sarl);
 	}
 	return 0;
