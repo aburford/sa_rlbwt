@@ -129,7 +129,7 @@ uint32_t query_sa_rlbwt(struct sa_rlbwt *sarl, uint32_t i) {
 		block = run->blocks + get_block_index(run->len, i - run->i, &blen, &boff);
 		delta += block->k;
 		i = block->pos + (i - (run->i + boff));
-		run = sarl->runs + find_run(sarl, i, block->run_lo, block->run_hi);
+		run = sarl->runs + find_run(sarl, i, 0, sarl->r - 1);
 	}
 	return run->sa + delta;
 }
@@ -152,7 +152,8 @@ void serialize_sa_rlbwt(struct sa_rlbwt *sarl, ofstream &outfile) {
 	for (int ri = 0; ri < sarl->r; ri++) {
 		struct sa_run *run = &sarl->runs[ri];
 		outfile.write((char*)run, sizeof(sa_run) - sizeof(sa_block *));
-		outfile.write((char*)run->blocks, sizeof(sa_block) * run->nblocks);
+		for (int bi = 0; bi < run->nblocks; bi++)
+			outfile.write((char*)&run->blocks[bi], sizeof(uint32_t) * 2);
 	}
 }
 

@@ -143,10 +143,14 @@ int main(int argc, char *argv[]) {
 			exit(1);
 		}
 		printf("query mode\n");
-		pattern_file = argv[3];
+		pattern_fn = argv[3];
 		ifstream ifs(infile);
 		struct sa_rlbwt *sarl = deserialize_sa_rlbwt(ifs);
-		// TODO read patterns file and perform queries
+		ifsteram patfile = ifs(pattern_fn);
+		string pattern;
+		while (patfile >> pattern) {
+			
+		}
 		print_sa_rlbwt(sarl);
 	} else if (mode == BUILD_MODE) {
 		if (argc != 3 && argc != 5) {
@@ -178,6 +182,10 @@ int main(int argc, char *argv[]) {
 			// print in microseconds
 			printf("%.3f\n", time_span.count() * 1000000);
 		}
+		ofstream ofs("repdna_x4.sa_rlbwt.smaller");
+		serialize_sa_rlbwt(sarl, ofs);
+		ofs.close();
+		free(sarl);
 	}
 	return 0;
 }
