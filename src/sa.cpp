@@ -1,4 +1,4 @@
-#include "sa_rlbwt.h"
+#include "../include/sa_rlbwt.h"
 
 void print_help() {
 	printf("Usage: sa_rlbwt [-b in_file] | [-q sa_rlbwt_file patterns_file ]\n");
@@ -7,7 +7,7 @@ void print_help() {
 	printf("-r accepts sa_rlbwt data struct file and suffix array file, randomly sample values of suffix array\n");
 }
 
-uint32_t query_sa(uint32_t *sa, uint32_t i) {
+uint32_t __attribute__((optimize("O0"))) query_sa(uint32_t *sa, uint32_t i) {
 	return sa[i];
 }
 

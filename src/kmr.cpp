@@ -1,4 +1,4 @@
-#include "sa_rlbwt.h"
+#include "../include/sa_rlbwt.h"
 
 struct kmr_result *build_kmr(string s) {
 	uint32_t n = s.size();

@@ -1,4 +1,4 @@
-#include "sa_rlbwt.h"
+#include "../include/sa_rlbwt.h"
 
 // dna alphabet:
 // ABCDGHKMNRSTVWY
@@ -144,12 +144,15 @@ int main(int argc, char *argv[]) {
 			exit(1);
 		}
 		printf("query mode\n");
-		pattern_file = argv[3];
+		pattern_fn = argv[3];
 		ifstream ifs(infile);
 		struct sa_rlbwt *sarl = deserialize_sa_rlbwt(ifs);
-		// TODO read patterns file and perform queries
-		print_sa_rlbwt(sarl);
-		free_sa_rlbwt(sarl);
+		ifstream patfile = ifs(pattern_fn);
+		string pattern;
+		while (patfile >> pattern) {
+			
+		}
+		free(sarl);
 	} else if (mode == BUILD_MODE) {
 		if (argc != 3 && argc != 5) {
 			print_help();

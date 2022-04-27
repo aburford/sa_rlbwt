@@ -12,7 +12,8 @@
 #define QUERY_MODE 2
 #define RAND_MODE 4
 
-#define RAND_SAMPLES 10000000
+//#define RAND_SAMPLES 1000000
+#define RAND_SAMPLES 1000000
 
 using namespace std;
 using namespace chrono;
@@ -36,7 +37,8 @@ struct sa_block {
 	uint32_t pos;
 	uint32_t k;
 	// cached run index
-	uint32_t run_i;
+	uint32_t run_lo;
+	uint32_t run_hi;
 };
 
 struct sa_run {
