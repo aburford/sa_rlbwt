@@ -4,13 +4,16 @@
 #include <fstream>
 #include <random>
 #include <cstring>
+#include <divsufsort.h>
 #include <chrono>
+#include <thread>
 
 #define BUILD_MODE 1
 #define QUERY_MODE 2
 #define RAND_MODE 4
 
-#define RAND_SAMPLES 20
+//#define RAND_SAMPLES 1000000
+#define RAND_SAMPLES 1000000
 
 using namespace std;
 using namespace chrono;
@@ -54,14 +57,16 @@ struct sa_rlbwt {
 };
 
 struct kmr_result *build_kmr(string s);
-uint32_t *deserialize(char *fn, uint32_t *len);
+uint32_t *deserialize(char *fn, uint64_t *len);
 
 struct rlbwt_result *build_rlbwt(char *bwt);
 struct sa_rlbwt *build_sa_rlbwt(struct rlbwt_result *res, uint32_t *sa, uint32_t *lf);
 uint32_t query_sa_rlbwt(struct sa_rlbwt *sarl, uint32_t i);
 void serialize_sa_rlbwt(struct sa_rlbwt *sarl, ofstream &outfile);
 struct sa_rlbwt *deserialize_sa_rlbwt(ifstream &infile);
+struct sa_rlbwt *deserialize_sa_rlbwt_old(ifstream &infile);
 void print_sa_rlbwt(struct sa_rlbwt *sarl);
+void free_sa_rlbwt(struct sa_rlbwt *sarl);
 
 extern uint32_t round_pow2(uint32_t n, bool up);
 

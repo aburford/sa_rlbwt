@@ -32,7 +32,7 @@ struct kmr_result *build_kmr(string s) {
 	uint32_t *counts_copy = (uint32_t*)malloc(sizeof(uint32_t) * (n+1));
 	uint32_t *permute = (uint32_t*)malloc(sizeof(uint32_t) * n);
 	uint64_t *tmp = (uint64_t*)malloc(sizeof(uint64_t) * n);
-	for (uint32_t ai = 1; ai <= k; ai++) {
+	for (int ai = 1; ai <= k; ai++) {
 		printf("computing kmr array %llu of %llu\n", ai, k);
 		for (uint32_t i = 0; i <= n; i++)
 			counts[i] = 0;
@@ -107,7 +107,7 @@ uint32_t round_pow2(uint32_t n, bool up) {
 	return lo;
 }
 
-uint32_t *deserialize(char *fn, uint32_t *len) {
+uint32_t *deserialize(char *fn, uint64_t *len) {
 	ifstream ifs(fn);
 	ifs.seekg(0, ifs.end);
 	*len = ifs.tellg();

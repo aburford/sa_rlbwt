@@ -7,7 +7,7 @@ void print_help() {
 	printf("-r accepts sa_rlbwt data struct file and suffix array file, randomly sample values of suffix array\n");
 }
 
-uint32_t query_sa(uint32_t *sa, uint32_t i) {
+uint32_t __attribute__((optimize("O0"))) query_sa(uint32_t *sa, uint32_t i) {
 	return sa[i];
 }
 
@@ -48,30 +48,34 @@ int main(int argc, char *argv[]) {
 		}
 		printf("query mode\n");
 		pattern_file = argv[3];
-		uint32_t len;
+		uint64_t len;
 		uint32_t *sa = deserialize(infile, &len);
 	} else if (mode == BUILD_MODE) {
 		ifstream ifs(infile);
 		string s;
 		ifs >> s;
-		uint32_t n = s.size();
-		struct kmr_result *kmr = build_kmr(s);
-		// get SA from last kmr array
-		uint32_t *sa = (uint32_t *)malloc(sizeof(uint32_t) * (n + 1));
-		sa[0] = n;
-		for (uint32_t i = 0; i <= n; i++)
-			sa[kmr->arr[i]] = i;
+		int64_t n = s.size();
+		//struct kmr_result *kmr = build_kmr(s);
+		int64_t *sa = (int64_t *)malloc(sizeof(int64_t) * n);
+		printf("calling divsufsort\n");
+		divsufsort((const unsigned char*)s.c_str(), sa, n);
+		printf("copying to uint32\n");
+		uint32_t *sa32 = (uint32_t *)malloc(sizeof(uint32_t) * (n+1));
+		sa32[0] = n;
+		for (uint32_t i = 1; i <= n; i++)
+			sa32[i] = sa[i-1];
 		string outfn(infile);
 		outfn += ".sa";
 		ofstream outfile(outfn);
-		outfile.write((char*)sa, sizeof(uint32_t) * (n + 1));
+		printf("writing output file\n");
+		outfile.write((char*)sa32, sizeof(uint32_t) * (n + 1));
 		outfile.close();
 	} else if (mode == RAND_MODE) {
 		if (argc != 3) {
 			print_help();
 			exit(1);
 		}
-		uint32_t len;
+		uint64_t len;
 		uint32_t *sa = deserialize(infile, &len);
 		len /= sizeof(uint32_t);
 		minstd_rand0 gen(0);

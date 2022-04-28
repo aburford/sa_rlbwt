@@ -107,7 +107,8 @@ struct sa_rlbwt *build_sa_rlbwt(struct rlbwt_result *res, uint32_t *sa, uint32_t
 		str_index += run->len;
 	}
 	for (int i = 0; i < sarl->r; i++) {
-		printf("computing blocks for run %d of %d\n", i, sarl->r);
+		if (i % 10000 == 0)
+			printf("computing blocks for run %d of %d\n", i, sarl->r);
 		struct sa_run *run = &sarl->runs[i];
 		uint32_t off = 1;
 		while (off < run->len) {
@@ -129,12 +130,50 @@ uint32_t query_sa_rlbwt(struct sa_rlbwt *sarl, uint32_t i) {
 		block = run->blocks + get_block_index(run->len, i - run->i, &blen, &boff);
 		delta += block->k;
 		i = block->pos + (i - (run->i + boff));
+		//run = sarl->runs + find_run(sarl, i, 0, sarl->r - 1);
 		run = sarl->runs + find_run(sarl, i, block->run_lo, block->run_hi);
 	}
 	return run->sa + delta;
 }
 
+void free_sa_rlbwt(struct sa_rlbwt *sarl) {
+	for (int ri = 0; ri < sarl->r; ri++) {
+		free(sarl->runs[ri].blocks);
+	}
+	free(sarl->runs);
+	free(sarl);
+}
+
 struct sa_rlbwt *deserialize_sa_rlbwt(ifstream &infile) {
+	char *buf = (char*)malloc(sizeof(sa_run) - sizeof(sa_block *));
+	infile.read(buf, sizeof(int));
+	int r = *(int*)buf;
+	uint64_t size = sizeof(struct sa_rlbwt) + r * sizeof(struct sa_run);
+	for (int i = 0; i < r; i++) {
+		infile.read(buf, sizeof(sa_run) - sizeof(struct sa_block*));
+		size += sizeof(sa_block) * ((struct sa_run *)buf)->nblocks;
+	}
+	free(buf);
+	struct sa_rlbwt *sarl = (struct sa_rlbwt *)malloc(size);
+	sarl->r = r;
+	sarl->runs = (struct sa_run*)(sarl + 1);
+	infile.seekg(sizeof(int));
+	struct sa_run *curr_run = sarl->runs;
+	struct sa_block *blocks = (struct sa_block*)(curr_run + r);
+	for (int i = 0; i < r; i++) {
+		infile.read((char*)curr_run, sizeof(sa_run) - sizeof(struct sa_block*));
+		curr_run->blocks = blocks;
+		blocks += curr_run->nblocks;
+		curr_run++;
+	}
+	for (int i = 0; i < r; i++) {
+		curr_run = &sarl->runs[i];
+		infile.read((char*)curr_run->blocks, sizeof(sa_block) * curr_run->nblocks);
+	}
+	return sarl;
+}
+
+struct sa_rlbwt *deserialize_sa_rlbwt_old(ifstream &infile) {
 	struct sa_rlbwt *sarl = (struct sa_rlbwt*)malloc(sizeof(struct sa_rlbwt));
 	infile.read((char*)&sarl->r, sizeof(int));
 	sarl->runs = (struct sa_run*)malloc(sizeof(struct sa_run) * sarl->r);
@@ -152,7 +191,12 @@ void serialize_sa_rlbwt(struct sa_rlbwt *sarl, ofstream &outfile) {
 	for (int ri = 0; ri < sarl->r; ri++) {
 		struct sa_run *run = &sarl->runs[ri];
 		outfile.write((char*)run, sizeof(sa_run) - sizeof(sa_block *));
+	}
+	for (int ri = 0; ri < sarl->r; ri++) {
+		struct sa_run *run = &sarl->runs[ri];
 		outfile.write((char*)run->blocks, sizeof(sa_block) * run->nblocks);
+		//for (int bi = 0; bi < run->nblocks; bi++)
+		//	outfile.write((char*)&run->blocks[bi], sizeof(uint32_t) * 2);
 	}
 }
 
@@ -167,10 +211,4 @@ void print_sa_rlbwt(struct sa_rlbwt *sarl) {
 			printf("\tblock %d: pos %llu, k %llu\n", bi, b->pos, b->k);
 		}
 	}
-}
-
-void free_sa_rlbwt(struct sa_rlbwt *sarl) {
-	for (int i = 0; i < sarl->r; i++)
-		free(sarl->runs[i].blocks);
-	free(sarl->runs);
 }
