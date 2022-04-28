@@ -106,7 +106,7 @@ int main(int argc, char *argv[]) {
 	int mode = 0;
 	char *infile;
 	char *sa_file = NULL;
-	char *pattern_file;
+	char *pattern_fn;
 	while ((ret = getopt(argc, argv, optstr)) > 0) {
 		switch (ret) {
 		case 'b':
@@ -147,7 +147,7 @@ int main(int argc, char *argv[]) {
 		pattern_fn = argv[3];
 		ifstream ifs(infile);
 		struct sa_rlbwt *sarl = deserialize_sa_rlbwt(ifs);
-		ifstream patfile = ifs(pattern_fn);
+		ifstream patfile(pattern_fn);
 		string pattern;
 		while (patfile >> pattern) {
 			
