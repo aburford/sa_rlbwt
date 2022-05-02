@@ -2,10 +2,13 @@ SA Queries in O(rlogn) space
 
 libdivsufsort is used for suffix array construction so make sure to install that first
 
-Type make in this directory to create two executables:
+Run `make` in this directory to create two executables:
 
 sa_rlbwt
 - This program can build our data structure and save it to a file. It can also read the data structure from a file and do things with it. Check the -h option.
+
+<!-- end of first bullet -->
+
 sa
 - This program uses libdivsufsort to create the suffix array for a text and saves it to a file. It can also read the suffix array from a file and do things with it. Check the -h option.
 
