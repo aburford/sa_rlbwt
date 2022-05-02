@@ -14,10 +14,10 @@ lib:
 	g++ -fPIC -c -o lib/kmr.o -std=c++17 -O3 -Wno-unused-variable -Wno-format src/kmr.cpp
 	gcc -shared -o lib/libsa_rlbwt.so lib/rlbwt.o lib/kmr.o
 
-genpatterns: bin/genpatterns
-bin/genpatterns:
+mygenpatterns: bin/mygenpatterns
+bin/mygenpatterns:
 	mkdir -p bin
-	g++ src/genpatterns.cpp -o bin/genpatterns
+	g++ src/mygenpatterns.cpp -o bin/mygenpatterns
 
 genstring: bin/genstring
 bin/genstring:
