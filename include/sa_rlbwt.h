@@ -67,6 +67,7 @@ struct sa_rlbwt *deserialize_sa_rlbwt(ifstream &infile);
 struct sa_rlbwt *deserialize_sa_rlbwt_old(ifstream &infile);
 void print_sa_rlbwt(struct sa_rlbwt *sarl);
 void free_sa_rlbwt(struct sa_rlbwt *sarl);
+uint32_t count_occ(struct sa_rlbwt *sarl, const char *text, const char *pattern);
 
 extern uint32_t round_pow2(uint32_t n, bool up);
 

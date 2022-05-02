@@ -1,8 +1,12 @@
-all:
+all: test lib genpatterns genstring
 	mkdir -p bin
 	g++ -std=c++17 -O3 -Wno-unused-variable -Wno-format src/kmr.cpp src/rlbwt.cpp src/main.cpp -o bin/sa_rlbwt
 	g++ -std=c++17 -O3 -Wno-unused-variable -Wno-format src/kmr.cpp src/rlbwt.cpp src/sa.cpp -o bin/sa -ldivsufsort
-	g++-6 -std=c++17 src/kmr.cpp src/rlbwt.cpp test/correctness_tests.cpp -o bin/test
+
+test: bin/test
+bin/test:
+	mkdir -p bin
+	g++ -std=c++17 src/kmr.cpp src/rlbwt.cpp test/correctness_tests.cpp -o bin/test
 
 lib:
 	mkdir -p lib
@@ -10,8 +14,12 @@ lib:
 	g++ -fPIC -c -o lib/kmr.o -std=c++17 -O3 -Wno-unused-variable -Wno-format src/kmr.cpp
 	gcc -shared -o lib/libsa_rlbwt.so lib/rlbwt.o lib/kmr.o
 
-genpatterns:
-	g++ mygenpatterns.cpp -o mygenpatterns
+genpatterns: bin/genpatterns
+bin/genpatterns:
+	mkdir -p bin
+	g++ src/genpatterns.cpp -o bin/genpatterns
 
-genstring:
-	g++ genstring.cpp -o genstring
+genstring: bin/genstring
+bin/genstring:
+	mkdir -p bin
+	g++ src/genstring.cpp -o bin/genstring
