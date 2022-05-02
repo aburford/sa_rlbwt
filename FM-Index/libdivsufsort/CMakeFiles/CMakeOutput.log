@@ -1,0 +1,491 @@
+The system is: Linux - 5.4.3+ - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/cc 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/luser/FM-Index/libdivsufsort/CMakeFiles/3.5.1/CompilerIdC/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3284c/fast"
+make[1]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_3284c.dir/build.make CMakeFiles/cmTC_3284c.dir/build
+make[2]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3284c.dir/testCCompiler.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_3284c.dir/testCCompiler.c.o   -c /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_3284c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3284c.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_3284c.dir/testCCompiler.c.o  -o cmTC_3284c -rdynamic 
+make[2]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_76823/fast"
+make[1]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_76823.dir/build.make CMakeFiles/cmTC_76823.dir/build
+make[2]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_76823.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_76823.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_76823
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_76823.dir/link.txt --verbose=1
+/usr/bin/cc      -v CMakeFiles/cmTC_76823.dir/CMakeCCompilerABI.c.o  -o cmTC_76823 -rdynamic  
+Using built-in specs.
+COLLECT_GCC=/usr/bin/cc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper
+OFFLOAD_TARGET_NAMES=nvptx-none
+OFFLOAD_TARGET_DEFAULT=1
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 8.4.0-1ubuntu1~16.04.1' --with-bugurl=file:///usr/share/doc/gcc-8/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-8 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 8.4.0 (Ubuntu 8.4.0-1ubuntu1~16.04.1) 
+COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_76823' '-rdynamic' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt=-fresolution=/tmp/ccmPgsFk.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_76823 /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/8/../../.. CMakeFiles/cmTC_76823.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_76823' '-rdynamic' '-mtune=generic' '-march=x86-64'
+make[2]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_76823/fast"]
+  ignore line: [make[1]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_76823.dir/build.make CMakeFiles/cmTC_76823.dir/build]
+  ignore line: [make[2]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_76823.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc     -o CMakeFiles/cmTC_76823.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_76823]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_76823.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTC_76823.dir/CMakeCCompilerABI.c.o  -o cmTC_76823 -rdynamic  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/cc]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper]
+  ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
+  ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+  ignore line: [Target: x86_64-linux-gnu]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 8.4.0-1ubuntu1~16.04.1' --with-bugurl=file:///usr/share/doc/gcc-8/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-8 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 8.4.0 (Ubuntu 8.4.0-1ubuntu1~16.04.1) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_76823' '-rdynamic' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt=-fresolution=/tmp/ccmPgsFk.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_76823 /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/8/../../.. CMakeFiles/cmTC_76823.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o]
+    arg [/usr/lib/gcc/x86_64-linux-gnu/8/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccmPgsFk.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_76823] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crt1.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/8/crtbegin.o] ==> ignore
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/8] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/8]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib] ==> dir [/lib/../lib]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/8/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/8/../../..]
+    arg [CMakeFiles/cmTC_76823.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--push-state] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--pop-state] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--push-state] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--pop-state] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/8/crtend.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o] ==> ignore
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/8] ==> [/usr/lib/gcc/x86_64-linux-gnu/8]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib] ==> [/usr/lib]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib] ==> [/lib]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/8/../../..] ==> [/usr/lib]
+  implicit libs: [c]
+  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/8;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+  implicit fwks: []
+
+
+
+
+Detecting C [-std=c11] compiler features compiled with the following output:
+Change Dir: /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_8bcd3/fast"
+make[1]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_8bcd3.dir/build.make CMakeFiles/cmTC_8bcd3.dir/build
+make[2]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8bcd3.dir/feature_tests.c.o
+/usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_8bcd3.dir/feature_tests.c.o   -c /home/luser/FM-Index/libdivsufsort/CMakeFiles/feature_tests.c
+Linking C executable cmTC_8bcd3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8bcd3.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_8bcd3.dir/feature_tests.c.o  -o cmTC_8bcd3 -rdynamic 
+make[2]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:1c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c99] compiler features compiled with the following output:
+Change Dir: /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_303a6/fast"
+make[1]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_303a6.dir/build.make CMakeFiles/cmTC_303a6.dir/build
+make[2]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_303a6.dir/feature_tests.c.o
+/usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_303a6.dir/feature_tests.c.o   -c /home/luser/FM-Index/libdivsufsort/CMakeFiles/feature_tests.c
+Linking C executable cmTC_303a6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_303a6.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_303a6.dir/feature_tests.c.o  -o cmTC_303a6 -rdynamic 
+make[2]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c90] compiler features compiled with the following output:
+Change Dir: /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_52772/fast"
+make[1]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_52772.dir/build.make CMakeFiles/cmTC_52772.dir/build
+make[2]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_52772.dir/feature_tests.c.o
+/usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_52772.dir/feature_tests.c.o   -c /home/luser/FM-Index/libdivsufsort/CMakeFiles/feature_tests.c
+Linking C executable cmTC_52772
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_52772.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_52772.dir/feature_tests.c.o  -o cmTC_52772 -rdynamic 
+make[2]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:0c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:0c_variadic_macros
+Performing C SOURCE FILE Test HAVE_GCC_WALL succeeded with the following output:
+Change Dir: /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_12181/fast"
+make[1]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_12181.dir/build.make CMakeFiles/cmTC_12181.dir/build
+make[2]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_12181.dir/src.c.o
+/usr/bin/cc    -DHAVE_GCC_WALL -Wall   -o CMakeFiles/cmTC_12181.dir/src.c.o   -c /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_12181
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_12181.dir/link.txt --verbose=1
+/usr/bin/cc   -DHAVE_GCC_WALL -Wall    CMakeFiles/cmTC_12181.dir/src.c.o  -o cmTC_12181 -rdynamic 
+make[2]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0; }
+Performing C SOURCE FILE Test HAVE_GCC_FOMIT_FRAME_POINTER succeeded with the following output:
+Change Dir: /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_1bb3d/fast"
+make[1]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_1bb3d.dir/build.make CMakeFiles/cmTC_1bb3d.dir/build
+make[2]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1bb3d.dir/src.c.o
+/usr/bin/cc    -Wall -DHAVE_GCC_FOMIT_FRAME_POINTER -fomit-frame-pointer   -o CMakeFiles/cmTC_1bb3d.dir/src.c.o   -c /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_1bb3d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1bb3d.dir/link.txt --verbose=1
+/usr/bin/cc   -Wall -DHAVE_GCC_FOMIT_FRAME_POINTER -fomit-frame-pointer    CMakeFiles/cmTC_1bb3d.dir/src.c.o  -o cmTC_1bb3d -rdynamic 
+make[2]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0; }
+Determining if the include file inttypes.h exists passed with the following output:
+Change Dir: /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_efc77/fast"
+make[1]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_efc77.dir/build.make CMakeFiles/cmTC_efc77.dir/build
+make[2]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_efc77.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -Wall    -o CMakeFiles/cmTC_efc77.dir/CheckIncludeFile.c.o   -c /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_efc77
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_efc77.dir/link.txt --verbose=1
+/usr/bin/cc   -Wall     CMakeFiles/cmTC_efc77.dir/CheckIncludeFile.c.o  -o cmTC_efc77 -rdynamic 
+make[2]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file memory.h exists passed with the following output:
+Change Dir: /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9c63a/fast"
+make[1]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_9c63a.dir/build.make CMakeFiles/cmTC_9c63a.dir/build
+make[2]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9c63a.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -Wall    -o CMakeFiles/cmTC_9c63a.dir/CheckIncludeFile.c.o   -c /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_9c63a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9c63a.dir/link.txt --verbose=1
+/usr/bin/cc   -Wall     CMakeFiles/cmTC_9c63a.dir/CheckIncludeFile.c.o  -o cmTC_9c63a -rdynamic 
+make[2]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_93667/fast"
+make[1]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_93667.dir/build.make CMakeFiles/cmTC_93667.dir/build
+make[2]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_93667.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -Wall    -o CMakeFiles/cmTC_93667.dir/CheckIncludeFile.c.o   -c /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_93667
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_93667.dir/link.txt --verbose=1
+/usr/bin/cc   -Wall     CMakeFiles/cmTC_93667.dir/CheckIncludeFile.c.o  -o cmTC_93667 -rdynamic 
+make[2]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f26e5/fast"
+make[1]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_f26e5.dir/build.make CMakeFiles/cmTC_f26e5.dir/build
+make[2]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f26e5.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -Wall    -o CMakeFiles/cmTC_f26e5.dir/CheckIncludeFile.c.o   -c /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_f26e5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f26e5.dir/link.txt --verbose=1
+/usr/bin/cc   -Wall     CMakeFiles/cmTC_f26e5.dir/CheckIncludeFile.c.o  -o cmTC_f26e5 -rdynamic 
+make[2]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdlib.h exists passed with the following output:
+Change Dir: /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9d2a2/fast"
+make[1]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_9d2a2.dir/build.make CMakeFiles/cmTC_9d2a2.dir/build
+make[2]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9d2a2.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -Wall    -o CMakeFiles/cmTC_9d2a2.dir/CheckIncludeFile.c.o   -c /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_9d2a2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9d2a2.dir/link.txt --verbose=1
+/usr/bin/cc   -Wall     CMakeFiles/cmTC_9d2a2.dir/CheckIncludeFile.c.o  -o cmTC_9d2a2 -rdynamic 
+make[2]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file string.h exists passed with the following output:
+Change Dir: /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_687a9/fast"
+make[1]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_687a9.dir/build.make CMakeFiles/cmTC_687a9.dir/build
+make[2]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_687a9.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -Wall    -o CMakeFiles/cmTC_687a9.dir/CheckIncludeFile.c.o   -c /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_687a9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_687a9.dir/link.txt --verbose=1
+/usr/bin/cc   -Wall     CMakeFiles/cmTC_687a9.dir/CheckIncludeFile.c.o  -o cmTC_687a9 -rdynamic 
+make[2]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file strings.h exists passed with the following output:
+Change Dir: /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_2c638/fast"
+make[1]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_2c638.dir/build.make CMakeFiles/cmTC_2c638.dir/build
+make[2]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2c638.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -Wall    -o CMakeFiles/cmTC_2c638.dir/CheckIncludeFile.c.o   -c /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_2c638
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2c638.dir/link.txt --verbose=1
+/usr/bin/cc   -Wall     CMakeFiles/cmTC_2c638.dir/CheckIncludeFile.c.o  -o cmTC_2c638 -rdynamic 
+make[2]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b0faa/fast"
+make[1]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_b0faa.dir/build.make CMakeFiles/cmTC_b0faa.dir/build
+make[2]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b0faa.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -Wall    -o CMakeFiles/cmTC_b0faa.dir/CheckIncludeFile.c.o   -c /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_b0faa
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b0faa.dir/link.txt --verbose=1
+/usr/bin/cc   -Wall     CMakeFiles/cmTC_b0faa.dir/CheckIncludeFile.c.o  -o cmTC_b0faa -rdynamic 
+make[2]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+
+
+Performing C SOURCE FILE Test HAVE_INLINE succeeded with the following output:
+Change Dir: /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_87c99/fast"
+make[1]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_87c99.dir/build.make CMakeFiles/cmTC_87c99.dir/build
+make[2]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_87c99.dir/src.c.o
+/usr/bin/cc    -Wall -DHAVE_INLINE   -o CMakeFiles/cmTC_87c99.dir/src.c.o   -c /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_87c99
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_87c99.dir/link.txt --verbose=1
+/usr/bin/cc   -Wall -DHAVE_INLINE    CMakeFiles/cmTC_87c99.dir/src.c.o  -o cmTC_87c99 -rdynamic 
+make[2]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+
+Source file was:
+inline void func(); void func() { } int main() { func(); return 0; }
+Performing C SOURCE FILE Test HAVE___INLINE succeeded with the following output:
+Change Dir: /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b918b/fast"
+make[1]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_b918b.dir/build.make CMakeFiles/cmTC_b918b.dir/build
+make[2]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b918b.dir/src.c.o
+/usr/bin/cc    -Wall -DHAVE___INLINE   -o CMakeFiles/cmTC_b918b.dir/src.c.o   -c /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_b918b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b918b.dir/link.txt --verbose=1
+/usr/bin/cc   -Wall -DHAVE___INLINE    CMakeFiles/cmTC_b918b.dir/src.c.o  -o cmTC_b918b -rdynamic 
+make[2]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+
+Source file was:
+__inline void func(); void func() { } int main() { func(); return 0; }
+Performing C SOURCE FILE Test HAVE___INLINE__ succeeded with the following output:
+Change Dir: /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_eb27d/fast"
+make[1]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_eb27d.dir/build.make CMakeFiles/cmTC_eb27d.dir/build
+make[2]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_eb27d.dir/src.c.o
+/usr/bin/cc    -Wall -DHAVE___INLINE__   -o CMakeFiles/cmTC_eb27d.dir/src.c.o   -c /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_eb27d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_eb27d.dir/link.txt --verbose=1
+/usr/bin/cc   -Wall -DHAVE___INLINE__    CMakeFiles/cmTC_eb27d.dir/src.c.o  -o cmTC_eb27d -rdynamic 
+make[2]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+
+Source file was:
+__inline__ void func(); void func() { } int main() { func(); return 0; }
+Determining size of uint8_t passed with the following output:
+Change Dir: /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_cdea0/fast"
+make[1]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_cdea0.dir/build.make CMakeFiles/cmTC_cdea0.dir/build
+make[2]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_cdea0.dir/UINT8_T.c.o
+/usr/bin/cc    -Wall    -o CMakeFiles/cmTC_cdea0.dir/UINT8_T.c.o   -c /home/luser/FM-Index/libdivsufsort/CMakeFiles/CheckTypeSize/UINT8_T.c
+Linking C executable cmTC_cdea0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cdea0.dir/link.txt --verbose=1
+/usr/bin/cc   -Wall     CMakeFiles/cmTC_cdea0.dir/UINT8_T.c.o  -o cmTC_cdea0 -rdynamic 
+make[2]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+
+
+Determining size of int32_t passed with the following output:
+Change Dir: /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_1cd9c/fast"
+make[1]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_1cd9c.dir/build.make CMakeFiles/cmTC_1cd9c.dir/build
+make[2]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1cd9c.dir/INT32_T.c.o
+/usr/bin/cc    -Wall    -o CMakeFiles/cmTC_1cd9c.dir/INT32_T.c.o   -c /home/luser/FM-Index/libdivsufsort/CMakeFiles/CheckTypeSize/INT32_T.c
+Linking C executable cmTC_1cd9c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1cd9c.dir/link.txt --verbose=1
+/usr/bin/cc   -Wall     CMakeFiles/cmTC_1cd9c.dir/INT32_T.c.o  -o cmTC_1cd9c -rdynamic 
+make[2]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+
+
+Determining if the PRId32 exist passed with the following output:
+Change Dir: /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_63868/fast"
+make[1]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_63868.dir/build.make CMakeFiles/cmTC_63868.dir/build
+make[2]: Entering directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_63868.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -Wall    -o CMakeFiles/cmTC_63868.dir/CheckSymbolExists.c.o   -c /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_63868
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_63868.dir/link.txt --verbose=1
+/usr/bin/cc   -Wall     CMakeFiles/cmTC_63868.dir/CheckSymbolExists.c.o  -o cmTC_63868 -rdynamic 
+make[2]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp'
+
+File /home/luser/FM-Index/libdivsufsort/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <inttypes.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef PRId32
+  return ((int*)(&PRId32))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
