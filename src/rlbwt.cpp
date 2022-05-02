@@ -121,6 +121,10 @@ struct sa_rlbwt *build_sa_rlbwt(struct rlbwt_result *res, uint32_t *sa, uint32_t
 	return sarl;
 }
 
+uint32_t count_occ(struct sa_rlbwt *sarl, char *text, char *pattern) {
+	uint32_t lo = 0, hi = strlen(text);
+}
+
 uint32_t query_sa_rlbwt(struct sa_rlbwt *sarl, uint32_t i) {
 	sa_run *run = sarl->runs + find_run(sarl, i, 0, sarl->r - 1);
 	sa_block *block;

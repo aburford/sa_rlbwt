@@ -25,9 +25,8 @@ void test(struct sa_rlbwt *sarl, uint32_t *sa, uint32_t len) {
 }
 
 void print_help() {
-	printf("Usage: sa_rlbwt [-b in_file [-s sa_file]] | [-q sa_rlbwt_file patterns_file ]\n");
+	printf("Usage: sa_rlbwt [-b in_file [-s sa_file]]\n");
 	printf("-b accepts plaintext file with one line of text and write out sa_rlbwt data structure to file. also accepts optional -s option to provide suffix array file\n");
-	printf("-q accepts sa_rlbwt data struct file and plaintext file with new line separated patterns to search for\n");
 	printf("-r accepts sa_rlbwt data struct file and suffix array file, randomly sample values of suffix array\n");
 }
 
@@ -139,7 +138,7 @@ int main(int argc, char *argv[]) {
 		exit(1);
 	}
 	if (mode == QUERY_MODE) {
-		if (argc != 4) {
+		if (argc != 5) {
 			print_help();
 			exit(1);
 		}
@@ -148,10 +147,17 @@ int main(int argc, char *argv[]) {
 		ifstream ifs(infile);
 		struct sa_rlbwt *sarl = deserialize_sa_rlbwt(ifs);
 		ifstream patfile(pattern_fn);
+		uint32_t total = 0;
+		char *textfn = argv[4];
+		ifstream textfile(textfn);
+		string text;
+		textfile >> text;
 		string pattern;
 		while (patfile >> pattern) {
-			
+		// decided not to implement since text access is required
+			total += count_occ(sarl, text.c_str(), pattern.c_str());
 		}
+		printf("total occs: %lu\n");
 		free(sarl);
 	} else if (mode == BUILD_MODE) {
 		if (argc != 3 && argc != 5) {
@@ -200,9 +206,6 @@ int main(int argc, char *argv[]) {
 			// print in microseconds
 			printf("%.3f\n", time_span.count() * 1000000);
 		}
-		ofstream ofs("repdna_x4.sa_rlbwt.smaller");
-		serialize_sa_rlbwt(sarl, ofs);
-		ofs.close();
 		free(sarl);
 	}
 	return 0;

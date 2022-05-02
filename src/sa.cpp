@@ -1,9 +1,8 @@
 #include "../include/sa_rlbwt.h"
 
 void print_help() {
-	printf("Usage: sa_rlbwt [-b in_file] | [-q sa_rlbwt_file patterns_file ]\n");
+	printf("Usage: sa_rlbwt [-b in_file] [-r sa_file]\n");
 	printf("-b accepts plaintext file with one line of text and write out suffix array to file\n");
-	printf("-q accepts sa_rlbwt data struct file and plaintext file with new line separated patterns to search for\n");
 	printf("-r accepts sa_rlbwt data struct file and suffix array file, randomly sample values of suffix array\n");
 }
 
@@ -50,6 +49,7 @@ int main(int argc, char *argv[]) {
 		pattern_file = argv[3];
 		uint64_t len;
 		uint32_t *sa = deserialize(infile, &len);
+		// we never ended up implementing this part
 	} else if (mode == BUILD_MODE) {
 		ifstream ifs(infile);
 		string s;
