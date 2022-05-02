@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
 		//struct kmr_result *kmr = build_kmr(s);
 		int64_t *sa = (int64_t *)malloc(sizeof(int64_t) * n);
 		printf("calling divsufsort\n");
-		divsufsort((const unsigned char*)s.c_str(), sa, n);
+		divsufsort((const unsigned char*)s.c_str(), (saidx_t *)sa, n);
 		printf("copying to uint32\n");
 		uint32_t *sa32 = (uint32_t *)malloc(sizeof(uint32_t) * (n+1));
 		sa32[0] = n;

@@ -48,6 +48,19 @@ std::string tm_sequence(int repeats) {
 	return sequence;
 }
 
+std::string random_string(int n) {
+	std::string s;
+	for (int i = 0; i < n; i++) {
+		char c = 'A';
+		// Characters are geometric to get nontrivial repetition
+		while (rand() % 2 != 0 and c != 'Z') {
+			c++;
+		}
+		s.push_back(c);
+	}
+	return s;
+}
+
 int compare_kmr(string s) {
 	uint32_t n = s.size();
 	uint32_t *sa, *lf;
@@ -71,17 +84,12 @@ int compare_kmr(string s) {
 		else
 			bwt[i] = '$';
 	}
-	//std::cout << "bwt: " << bwt << std::endl;
 	struct rlbwt_result *rlbwt = build_rlbwt(bwt);
-	//printf("rlbwt:");
-	//for (int i = 0; i < rlbwt->r; i++) {
-	//	printf(" (%c, %llu)", rlbwt->runs[i].c, rlbwt->runs[i].len);
-	//}
 	struct sa_rlbwt *sarl = build_sa_rlbwt(rlbwt, sa, lf);
-	//print_sa_rlbwt(sarl);
+	// Exhaustively check suffix array queries against ground truth
+	// from kmr
 	for (uint64_t i = 0; i <= n; i++) {
 		assert(sa[i] == query_sa_rlbwt(sarl, i));
-		//std::cout << "sa[" << i << "]: " << sa[i] << " res: " << query_sa_rlbwt(sarl, i) << std::endl;
 	}
 	return 0;
 }
@@ -95,8 +103,11 @@ int main(int argc, char *argv[]) {
 	for (int n = 1; n < 12; n++) {
 		compare_kmr(tm_sequence(n));
 	}
-	//std::string seq = db_sequence(2, 5);
-	//std::string seq = tm_sequence(5);
-	//compare_kmr(seq);
+	int seed = time(NULL);
+	std::cout << "seed: " << seed << std::endl;
+	srand(seed);
+	for (int n = 1; n <= 1 << 16; n *= 2) {
+		compare_kmr(random_string(n));
+	}
 	return 0;
 }
